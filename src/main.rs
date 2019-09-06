@@ -68,6 +68,7 @@ fn main() {
             habitctl.assert_habits();
             habitctl.todo()
         }
+        
         ("ask", Some(sub_matches)) => {
             habitctl.assert_habits();
             let ago: i64 = if sub_matches.is_present("days ago") {
@@ -189,7 +190,8 @@ impl HabitCtl {
 
     fn log(&self, filters: &Vec<&str>) {
         let to = Local::now();
-        let from = to.checked_sub_signed(chrono::Duration::days(100)).unwrap();
+        // let from = to.checked_sub_signed(chrono::Duration::days(100)).unwrap();
+        let from = to.checked_sub_signed(chrono::Duration::days(21)).unwrap();
 
         print!("{0: >25} ", "");
         let mut current = from;
